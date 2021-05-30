@@ -1,0 +1,36 @@
+
+<h2 mat-dialog-title>Search teachers</h2>
+
+<form class="form-container100 popup" (ngSubmit)="onSearch(f)" #f="ngForm">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput name="name" placeholder="name" [ngModel]="form.name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="surname" placeholder="surname" [ngModel]="form.surname">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="address" placeholder="address" [ngModel]="form.address">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="cap" placeholder="Cap" [ngModel]="form.cap">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="city" placeholder="Città" [ngModel]="form.city">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="province" placeholder="-- province --" [ngModel]="form.province">
+        <mat-option value="">-- Tutte le province --</mat-option>
+        <mat-option *ngFor="let province of provinces | async" [value]="province.provinceId">
+          {{ province.provinceName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="f.invalid">Search</button>
+    <button mat-raised-button type="button" (click)="onClear()">Clear</button>
+    <button mat-raised-button type="button" (click)="onClose()">Cancel</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,33 @@
+<div>
+  <div class="base-container">
+    <h2>Create courses</h2>    
+  </div>
+
+  <div>
+    <form class="form-container100" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <mat-form-field>
+        <input matInput name="name" placeholder="name" #refName="ngModel" ngModel required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="kind" placeholder="kind" #refKind="ngModel" ngModel validInt required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="day" placeholder="day" #refDay="ngModel" ngModel validInt required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="picker" name="dateCreated" placeholder="dateCreated" ngModel readonly>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="price" placeholder="price" #refPrice="ngModel" ngModel validDec required>
+      </mat-form-field>    
+
+      <div>
+        <button mat-raised-button color="primary" [disabled]="f.invalid">Save</button>&nbsp;
+        <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>&nbsp;
+      </div>     
+    </form>   
+  </div>
+</div>
+

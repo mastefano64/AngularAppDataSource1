@@ -1,0 +1,5 @@
+<div class="workshopsBox">
+  <app-workshopslistitem *ngFor="let workshop of workshops | async" (managestudentitem)="onManagestudentItem($event)"
+             (edititem)="onEditItem($event)" (deleteitem)="onDeleteItem($event)" [workshop]="workshop">
+  </app-workshopslistitem>
+</div>

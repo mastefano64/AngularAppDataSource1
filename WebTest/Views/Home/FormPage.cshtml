@@ -1,0 +1,49 @@
+﻿@model WebTest.Models.FormPage
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<br /><br />
+<div style="text-align: center;">
+    @using (Html.BeginForm("FormPage", "Home", FormMethod.Post, new { @class = "mainform" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.CampoStr, new { @class = "form-control", placeholder = "campoStr" })
+                @Html.ValidationMessageFor(m => m.CampoStr)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.CampoInt, new { @class = "form-control", placeholder = "campoInt" })
+                @Html.ValidationMessageFor(m => m.CampoInt)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.CampoDbl, new { @class = "form-control", placeholder = "campoDbl" })
+                @Html.ValidationMessageFor(m => m.CampoDbl)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.CampoDec, new { @class = "form-control", placeholder = "campoDec" })
+                @Html.ValidationMessageFor(m => m.CampoDec)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextBoxFor(m => m.CampoDat, new { @class = "form-control", placeholder = "campoDat" })
+                @Html.ValidationMessageFor(m => m.CampoDat)
+            </div>
+        </div>
+
+        <br /><br />
+
+        <div>
+            <button type="submit" class="btn btn-default">Invia</button>
+        </div>
+    }
+</div>
+<br /><br />

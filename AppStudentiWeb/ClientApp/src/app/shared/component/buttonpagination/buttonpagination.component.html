@@ -1,0 +1,16 @@
+
+<button mat-raised-button [color]="color" [disabled]="!hasFirstPage" (click)="onPagingFirst()">
+  {{ textfirst}}
+</button>&nbsp;
+<button mat-raised-button [color]="color" [disabled]="!hasPrevPage" (click)="onPagingPrev()">
+  {{ textprev}}
+</button>&nbsp;
+<span>{{ page + 1 }}</span>&nbsp;
+<span> {{ textof }} </span>&nbsp;
+<span>{{ maxPage + 1 }}</span>&nbsp;
+<button mat-raised-button [color]="color" [disabled]="!hasNextPage" (click)="onPagingNext()">
+  {{ textnext}}
+</button>&nbsp;
+<button mat-raised-button [color]="color" [disabled]="!hasLastPage" (click)="onPagingLast()">
+  {{ textlast}}
+</button>&nbsp;

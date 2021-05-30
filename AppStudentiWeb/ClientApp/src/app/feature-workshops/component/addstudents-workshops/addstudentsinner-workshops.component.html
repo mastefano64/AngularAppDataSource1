@@ -1,0 +1,16 @@
+
+<div class="innerPanel">
+  <app-searchtextbox [placeholder]="'Surname'" [value]="search" (textboxkeyup)="onTextboxKeyup($event)"></app-searchtextbox>
+  <div>
+    <p class="text-center" *ngIf="students.length == 0">
+      No student found!
+    </p>
+    <table *ngIf="students.length > 0">
+      <tr class="rows" *ngFor="let student of students" (click)="onSelectItem(student)">
+        <td>
+          {{ student.studentId }}) {{ student.name }} {{ student.surname }}
+        </td>
+      </tr>
+    </table>
+  </div>  
+</div>

@@ -1,0 +1,6 @@
+
+<div style="padding-right: 6px;" (click)="onClick()">
+  <span><ng-content></ng-content></span>
+  <img src="/assets/images/sort1.svg" width="{{ iconsize }}" [hidden]="!colvisible" />
+  <img src="/assets/images/sort2.svg" width="{{ iconsize }}" [hidden]="colvisible" />
+</div>

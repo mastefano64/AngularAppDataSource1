@@ -1,0 +1,116 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+.base-container {
+  margin: 20px;
+}
+
+.pagecontainer {
+  margin: 15px 15px 40px 15px;
+}
+
+.text-center {
+  margin: 0px auto 0px auto;
+}
+
+.navTitleCommandBar {
+  width: 100%;
+}
+
+  .navTitleCommandBar .navTitle {
+    display: inline-block;
+    width: 80%;
+  }
+
+  .navTitleCommandBar app-loginlogout {
+    display: inline-block;
+    width: 20%;
+  }
+
+  .navTitleCommandBar .loginlogoutPanel {
+    text-align: right;
+    width: 100%;
+  }
+
+  .navTitleCommandBar .loginButton {
+    padding-right: 30px;
+    font-size: 15px;
+  }
+
+    .navTitleCommandBar .loginButton:hover {
+      text-decoration: underline;
+    }
+
+  .navTitleCommandBar .logoutButton {
+    padding-right: 30px;
+    font-size: 15px;
+  }
+
+    .navTitleCommandBar .logoutButton:hover {
+      text-decoration: underline;
+    }
+
+.form-center {
+  margin: 0px auto 0px auto;
+}
+
+.form-container100 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+  .form-container100 > * {
+    width: 100%;
+  }
+
+.form-container50 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+  .form-container50 > * {
+    width: 100%;
+  }
+
+.spinner-container {
+  height: 150px;
+  width: 150px;
+  position: fixed;
+}
+
+  .spinner-container mat-spinner {
+    margin: 30px auto 0 auto;
+  }
+
+.table-empty {
+  text-align: center;
+}
+
+.headerNavBar1 {
+  display: inline-block;
+}
+
+.headerNavBar2 {
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.searchActive {
+  text-decoration: underline !important;
+}
+
+.messagebox p {
+  text-align: center;
+}
+
+.messagebox span {
+  display: block;
+}
+
+.popup mat-form-field {
+  display: block;
+}

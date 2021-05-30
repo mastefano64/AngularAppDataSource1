@@ -1,0 +1,14 @@
+
+Message=Cannot open database "appstudenti" requested by the login. The login failed.
+Login failed for user 'DESKTOP-45TC4PS\stefano'.
+Source=Core .Net SqlClient Data Provider
+
+Scaffold-DbContext -Project "WebTest" -Provider Microsoft.EntityFrameworkCore.SqlServer -Connection "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=appstudenti;Trusted_Connection=True;MultipleActiveResultSets=true" -OutputDir Models
+
+Scaffold-DbContext -Project "WebTest" -Provider Microsoft.EntityFrameworkCore.SqlServer -Connection "Server=(localdb)\\mssqllocaldb;Database=appstudenti;Trusted_Connection=True;MultipleActiveResultSets=true" -OutputDir ScaffoldDbContext
+
+dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=appstudenti;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o ScaffoldDbContext
+
+MSSQLLocalDB
+
+SQLLocalDB

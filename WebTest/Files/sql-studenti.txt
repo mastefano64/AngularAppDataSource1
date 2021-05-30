@@ -1,0 +1,174 @@
+USE [appstudenti]
+GO
+
+drop table [dbo].[Province]
+drop table [dbo].[WorkshopDetail]
+drop table [dbo].[Workshop]
+drop table [dbo].[Course]
+drop table [dbo].[Student]
+drop table [dbo].[Teacher]
+
+/****** Object:  Table [dbo].[Province]    Script Date: 21/10/2018 00:41:39 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Province](
+	[ProvinceId] [nvarchar](3) NOT NULL,
+	[ProvinceName] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_Province] PRIMARY KEY CLUSTERED 
+(
+	[ProvinceId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [appstudenti]
+GO
+
+/****** Object:  Table [dbo].[Teacher]    Script Date: 21/10/2018 00:42:06 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Teacher](
+	[TeacherId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[Surname] [nvarchar](100) NOT NULL,
+	[Address] [nvarchar](100) NOT NULL,
+	[Cap] [nvarchar](5) NOT NULL,
+	[City] [nvarchar](100) NOT NULL,
+	[Province] [nvarchar](3) NOT NULL,
+ CONSTRAINT [PK_Teacher] PRIMARY KEY CLUSTERED 
+(
+	[TeacherId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [appstudenti]
+GO
+
+/****** Object:  Table [dbo].[Student]    Script Date: 21/10/2018 00:42:25 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Student](
+	[StudentId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[Surname] [nvarchar](100) NOT NULL,
+	[Address] [nvarchar](100) NOT NULL,
+	[Cap] [nvarchar](5) NOT NULL,
+	[City] [nvarchar](100) NOT NULL,
+	[Province] [nvarchar](3) NOT NULL,
+ CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED 
+(
+	[StudentId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [appstudenti]
+GO
+
+/****** Object:  Table [dbo].[Course]    Script Date: 21/10/2018 00:42:38 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Course](
+	[CourseId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[Kind] [int] NOT NULL,
+	[Day] [int] NOT NULL,
+	[DateCreated] [datetime] NOT NULL,
+	[Price] [decimal](18, 2) NOT NULL,
+ CONSTRAINT [PK_Course] PRIMARY KEY CLUSTERED 
+(
+	[CourseId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [appstudenti]
+GO
+
+/****** Object:  Table [dbo].[Workshop]    Script Date: 21/10/2018 00:42:48 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Workshop](
+	[WorkshopId] [int] IDENTITY(1,1) NOT NULL,
+	[TeacherId] [int] NOT NULL,
+	[CourseId] [int] NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[DateIn] [datetime] NOT NULL,
+	[DateFi] [datetime] NOT NULL,
+ CONSTRAINT [PK_Workshop] PRIMARY KEY CLUSTERED 
+(
+	[WorkshopId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Workshop]  WITH CHECK ADD  CONSTRAINT [FK_Workshop_Course] FOREIGN KEY([CourseId])
+REFERENCES [dbo].[Course] ([CourseId])
+GO
+
+ALTER TABLE [dbo].[Workshop] CHECK CONSTRAINT [FK_Workshop_Course]
+GO
+
+ALTER TABLE [dbo].[Workshop]  WITH CHECK ADD  CONSTRAINT [FK_Workshop_Teacher] FOREIGN KEY([TeacherId])
+REFERENCES [dbo].[Teacher] ([TeacherId])
+GO
+
+ALTER TABLE [dbo].[Workshop] CHECK CONSTRAINT [FK_Workshop_Teacher]
+GO
+
+USE [appstudenti]
+GO
+
+/****** Object:  Table [dbo].[WorkshopDetail]    Script Date: 21/10/2018 00:43:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[WorkshopDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[WorkshopId] [int] NOT NULL,
+	[StudentId] [int] NOT NULL,
+ CONSTRAINT [PK_WorkshopDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[WorkshopDetail]  WITH CHECK ADD  CONSTRAINT [FK_WorkshopDetail_Student] FOREIGN KEY([StudentId])
+REFERENCES [dbo].[Student] ([StudentId])
+GO
+
+ALTER TABLE [dbo].[WorkshopDetail] CHECK CONSTRAINT [FK_WorkshopDetail_Student]
+GO
+
+ALTER TABLE [dbo].[WorkshopDetail]  WITH CHECK ADD  CONSTRAINT [FK_WorkshopDetail_Workshop] FOREIGN KEY([WorkshopId])
+REFERENCES [dbo].[Workshop] ([WorkshopId])
+GO
+
+ALTER TABLE [dbo].[WorkshopDetail] CHECK CONSTRAINT [FK_WorkshopDetail_Workshop]
+GO
+

@@ -1,0 +1,83 @@
+<div>
+  <div class="base-container">
+    <h2>Students</h2>
+    <button mat-raised-button color="primary" (click)="onCreate()">Create</button>
+    &nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="primary" [app-SearchButton]="searchempty" (click)="onShowModalSearch()">Search</button>
+    &nbsp;&nbsp;&nbsp;
+    <app-searchtextbox [placeholder]="'Surname'" (textboxkeyup)="onTextboxKeyup($event)"></app-searchtextbox>
+  </div>
+
+  <div class="spinner-container" *ngIf="datasource.loading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-paginator [length]="datasource.count" [pageSize]="datasource.pageSize"
+            [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+
+  <mat-table class="ditte-table mat-elevation-z8" [dataSource]="datasource" matSort
+        matSortActive="studentsid" matSortDirection="asc" matSortDisableClear>
+
+    <ng-container matColumnDef="studentid">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let r">{{ r.studentId }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let r">{{ r.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Surame</mat-header-cell>
+      <mat-cell *matCellDef="let r">{{ r.surname }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
+      <mat-cell *matCellDef="let r">{{ r.address }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cap">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Cap</mat-header-cell>
+      <mat-cell *matCellDef="let r">{{ r.cap }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+      <mat-cell *matCellDef="let r">{{ r.city }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="province">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-icon [matMenuTriggerFor]="menu">find_in_page</mat-icon>
+        <span mat-sort-header>Provincia</span>
+        <mat-menu #menu="matMenu">
+          <mat-form-field>
+            <mat-select (selectionChange)="onProvinceChange($event)" [ngModel]="search.province">
+              <mat-option value="">-- Tutte le province --</mat-option>
+              <mat-option *ngFor="let p of provinces | async" value="{{ p.provinceId }}">{{ p.provinceName }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-menu>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let r">{{ r.province }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="x">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let r">
+        <button mat-raised-button color="primary" (click)="onEdit(r)">Edit</button>&nbsp;
+        <button mat-raised-button color="primary" (click)="onDelete(r)">Delete</button>&nbsp;
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let r; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <div *ngIf="datasource.count <= 0">
+    <h1 class="table-empty">Not found</h1>
+  </div>
+</div>
+

@@ -1,0 +1,40 @@
+
+.innerPanel {
+  width: 400px;
+  height: 400px;
+  margin: 5px;
+  padding: 5px;
+  background-color: #FCFCFC;
+  border: 1px solid #000000;
+  overflow: auto;
+}
+
+table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+tr.head {
+  height: 56px;
+  font-weight: bold;
+}
+
+tr.rows {
+  height: 48px;
+}
+
+td {
+  padding: 0;
+  border-bottom-width: 1px;
+  border-bottom-color: lightgray;
+  border-bottom-style: solid;
+  text-align: left;
+}
+
+  th:first-child, td:first-child {
+    padding-left: 24px;
+  }
+
+  th:last-child, td:last-child {
+    padding-right: 24px;
+  }

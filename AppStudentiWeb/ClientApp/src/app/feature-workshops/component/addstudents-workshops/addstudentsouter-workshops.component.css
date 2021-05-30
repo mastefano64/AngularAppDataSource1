@@ -1,0 +1,10 @@
+
+.outerPanel {
+  margin: 5px;
+  text-align: left;
+}
+
+.selectedname {
+  padding-left: 10px;
+  font-size: 14px;
+}

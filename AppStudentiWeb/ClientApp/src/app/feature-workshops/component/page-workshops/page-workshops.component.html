@@ -1,0 +1,17 @@
+<div>
+  <h2>Workshops</h2>
+
+  <div>
+    <div class="headerNavBar1">
+      <button mat-raised-button color="primary" (click)="onCreate()">Create</button>
+      &nbsp;&nbsp;&nbsp;
+      <button mat-raised-button color="primary" [app-SearchButton]="searchempty" (click)="onShowModalSearch()">Search</button>
+    </div>
+    <div class="headerNavBar2">
+      <app-buttonpagination [datasource]="datasource" [updatedate]="datasource.datetime"></app-buttonpagination>
+    </div>
+  </div>
+
+  <app-workshopslist [workshops]="workshops" (edit)="onEdit($event)" (delete)="onDelete($event)" (managestudent)="onManageStudent($event)"></app-workshopslist>
+</div>
+

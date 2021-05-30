@@ -1,0 +1,40 @@
+
+<h2 mat-dialog-title>Search workshops</h2>
+
+<form class="form-container100 popup" (ngSubmit)="onSearch(f)" #f="ngForm">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput name="name" placeholder="name" [ngModel]="form.name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="courseId" placeholder="-- course --" [ngModel]="form.courseId">
+        <mat-option *ngFor="let course of courses | async" [value]="course.courseId">
+          {{ course.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="teacherId" placeholder="-- teacher --" [ngModel]="form.teacherId">
+        <mat-option *ngFor="let teacher of teachers | async" [value]="teacher.teacherId">
+          {{ teacher.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-datepicker #picker1></mat-datepicker>
+      <input matInput [matDatepicker]="picker1" name="dateIn" placeholder="dateIn" [ngModel]="form.dateIn" readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-datepicker #picker2></mat-datepicker>
+      <input matInput [matDatepicker]="picker2" name="dateFi" placeholder="dateFi" [ngModel]="form.dateFi" readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="f.invalid">Search</button>
+    <button mat-raised-button type="button" (click)="onClear()">Clear</button>
+    <button mat-raised-button type="button" (click)="onClose()">Cancel</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,9 @@
+<div class="outerPanel">
+  <div>
+    <button mat-raised-button cdkOverlayOrigin #trigger="cdkOverlayOrigin" (click)="onOpenClose()">Search student</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="onAddedStudent()" [disabled]="!selected">Add selected student</button><span class="selectedname">{{ selected?.surname }} {{ selected?.name }}</span>
+  </div>
+  <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isopen">
+    <app-addstudentsoverlay [search]="search" [students]="students" (textboxkeyup)="onTextboxKeyup($event)" (selectitem)="onSelectItem($event)"></app-addstudentsoverlay>
+  </ng-template>
+</div>

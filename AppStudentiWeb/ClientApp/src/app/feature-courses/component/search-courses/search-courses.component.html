@@ -1,0 +1,30 @@
+
+<h2 mat-dialog-title>Search courses</h2>
+
+<form class="form-container100 popup" (ngSubmit)="onSearch(f)" #f="ngForm">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput name="name" placeholder="name" [ngModel]="form.name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="kind" placeholder="kind" [ngModel]="form.kind">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="day" placeholder="day" [ngModel]="form.day">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-datepicker #picker></mat-datepicker>
+      <input matInput [matDatepicker]="picker" name="dateCreated" placeholder="dateCreated" [ngModel]="form.dateCreated" readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="price" placeholder="price" [ngModel]="form.price | formatDec" validDec>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="f.invalid">Search</button>
+    <button mat-raised-button type="button" (click)="onClear()">Clear</button>
+    <button mat-raised-button type="button" (click)="onClose()">Cancel</button>
+  </mat-dialog-actions>
+</form>

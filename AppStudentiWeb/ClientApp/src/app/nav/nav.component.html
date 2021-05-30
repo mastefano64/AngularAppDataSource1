@@ -1,0 +1,54 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #start>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/home']" (click)="onPageChange(1)">
+        <mat-icon>home</mat-icon>
+        <span>home</span>
+      </a>
+
+      <a mat-list-item [routerLink]="['/teachers/list']" (click)="onPageChange(2)">
+        <mat-icon>link</mat-icon>
+        <span>Teachers</span>
+      </a>
+      <div *ngIf="menutype == 2" class="sidesubmenu">
+        Submenu2
+      </div>
+
+      <a mat-list-item [routerLink]="['/students/list']" (click)="onPageChange(3)">
+        <mat-icon>link</mat-icon>
+        <span>Students</span>
+      </a>
+      <div *ngIf="menutype == 3" class="sidesubmenu">
+        Submenu3
+      </div>
+
+      <a mat-list-item [routerLink]="['/courses/list']" (click)="onPageChange(4)">
+        <mat-icon>link</mat-icon>
+        <span>Courses</span>
+      </a>
+      <div *ngIf="menutype == 4" class="sidesubmenu">
+        Submenu4
+      </div>
+
+      <a mat-list-item [routerLink]="['/workshops/list']" (click)="onPageChange(5)">
+        <mat-icon>link</mat-icon>
+        <span>Workshops</span>
+      </a>
+      <div *ngIf="menutype == 5" class="sidesubmenu">
+        Submenu5
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="start.open('mouse')">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="navTitleCommandBar">
+      <div class="navTitle">Event Horizon School</div>
+      <app-loginlogout [authenticated]="authenticated" (login)="onLogin()" (logout)="onLogout()"></app-loginlogout>
+    </div>  
+  </mat-toolbar>
+  <div class="pagecontainer">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

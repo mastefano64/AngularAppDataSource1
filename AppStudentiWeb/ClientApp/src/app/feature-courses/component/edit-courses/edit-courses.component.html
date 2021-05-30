@@ -1,0 +1,36 @@
+<div>
+  <div class="base-container">
+    <h2>Edit courses</h2>    
+  </div>
+
+  <div>
+    <form class="form-container100" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <mat-form-field>
+        <input matInput name="courseId" [ngModel]="course.courseId" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="name" placeholder="name" #refName="ngModel" [ngModel]="course.name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="kind" placeholder="kind" #refKind="ngModel" [ngModel]="course.kind" validInt required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="day" placeholder="day" #refDay="ngModel" [ngModel]="course.day" validInt required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="picker" name="dateCreated" placeholder="dateCreated" [ngModel]="course.dateCreated" readonly>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="price" placeholder="price" #refPrice="ngModel" [ngModel]="course.price | formatDec" validDec required>
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button color="primary" [disabled]="f.invalid">Save</button>&nbsp;
+        <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>&nbsp;
+      </div>
+    </form>   
+  </div>
+</div>
+

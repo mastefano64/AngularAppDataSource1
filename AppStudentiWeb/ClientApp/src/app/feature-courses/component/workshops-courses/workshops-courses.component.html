@@ -1,0 +1,38 @@
+<div>
+  <mat-dialog-content>
+    <table>
+      <tr class="head">
+        <td>
+          WorkshopsId
+        </td>
+        <td>
+          Name
+        </td>
+        <td>
+          DateIn
+        </td>
+        <td>
+          DateFi
+        </td>    
+      </tr>
+      <tr class="rows" *ngFor="let workshop of workshops | async">
+        <td>
+          {{ workshop.workshopId }}
+        </td>
+        <td>
+          {{ workshop.name }} 
+        </td>
+        <td>
+          {{ workshop.dateIn | date:'dd/MM/yyyy' }}
+        </td>
+        <td>
+          {{ workshop.dateFi | date:'dd/MM/yyyy' }}
+        </td>        
+      </tr>
+    </table>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button type="button" (click)="onClose()">Close</button>
+  </mat-dialog-actions>
+</div>

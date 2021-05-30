@@ -1,0 +1,20 @@
+<mat-card class="workshopsitem">
+  <mat-card-content>
+    <div>
+      <b>Workshop: {{ workshop.workshopId }}</b><br />
+      Name: {{ workshop.name }}<br />
+      Start date: {{ workshop.dateIn | date:'dd/MM/yyyy' }}<br />
+      End date: {{ workshop.dateFi | date:'dd/MM/yyyy' }}<br />
+      Course: {{ workshop.courseId }} {{ workshop.courseName }}<br />
+      Teacher: {{ workshop.teacherId }} {{ workshop.teacherName }}<br />
+    </div>    
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onManageStudentItem(workshop)">Manage student</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="onEditItem(workshop)">Edit</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="onDeleteItem(workshop)">Delete</button>&nbsp;
+  </mat-card-actions>
+</mat-card>
+
+

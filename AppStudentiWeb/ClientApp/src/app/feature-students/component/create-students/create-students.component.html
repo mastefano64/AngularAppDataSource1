@@ -1,0 +1,38 @@
+<div>
+  <div class="base-container">
+    <h2>Create students</h2>    
+  </div>
+
+  <div>
+    <form class="form-container100" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <mat-form-field>
+        <input matInput name="name" placeholder="name" #refName="ngModel" ngModel required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="surname" placeholder="surname" #refSurname="ngModel" ngModel required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="address" placeholder="address" #refAddress="ngModel" ngModel required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="cap" placeholder="cap" #refCap="ngModel" ngModel required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="city" placeholder="city" #refCity="ngModel" ngModel required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select name="province" placeholder="-- province --" ngModel required>
+          <mat-option *ngFor="let province of provinces | async" [value]="province.provinceId">
+            {{ province.provinceName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button color="primary" [disabled]="f.invalid">Save</button>&nbsp;
+        <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>&nbsp;
+      </div>
+    </form>   
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+<br /><br /><br />
+<h1>Login</h1>
+<div>
+  <form class="form-container50" #f="ngForm">
+    <mat-form-field>
+      <input matInput name="username" placeholder="username" [(ngModel)]="username" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="password" placeholder="password" [(ngModel)]="password" required>
+    </mat-form-field>
+
+    <div *ngIf="invalid">
+      <h4 style="color:red;">username o password errata!</h4>
+    </div>
+
+    <div>
+      <button mat-raised-button color="primary" type="button" (click)="onLogin()" [disabled]="f.invalid">Login</button>
+    </div>
+  </form>
+</div>
+<br /><br /><br />

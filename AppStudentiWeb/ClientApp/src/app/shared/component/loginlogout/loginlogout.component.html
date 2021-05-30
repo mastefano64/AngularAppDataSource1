@@ -1,0 +1,7 @@
+
+<div class="loginlogoutPanel" *ngIf="!authenticated">
+  <a class="loginButton" (click)="onLogin()">Login</a>
+</div>
+<div class="loginlogoutPanel" *ngIf="authenticated">
+  <a class="logoutButton" (click)="onLogout()">Logout</a>
+</div>

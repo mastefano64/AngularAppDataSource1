@@ -1,0 +1,48 @@
+<div>
+  <mat-dialog-content>
+    <div>
+      <app-addstudentsbutton (addedstudent)="onAddedStudent($event)"></app-addstudentsbutton>
+    </div>
+
+    <table>
+      <tr class="head">
+        <td>
+          StudentId
+        </td>
+        <td>
+          Name
+        </td>
+        <td>
+          Address
+        </td>
+        <td>
+          City
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      <tr class="rows" *ngFor="let student of students | async">
+        <td>
+          {{ student.studentId }}
+        </td>
+        <td>
+          {{ student.name }} {{ student.surname }}
+        </td>
+        <td>
+          {{ student.address }}
+        </td>
+        <td>
+          {{ student.cap }} {{ student.city }} {{ student.province }}
+        </td>
+        <td>
+          <button mat-raised-button color="primary" (click)="onDelete(student)">Delete</button>&nbsp;
+        </td>
+      </tr>
+    </table>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button type="button" (click)="onClose()">Close</button>
+  </mat-dialog-actions>
+</div>
