@@ -4,11 +4,11 @@ Quando si realizza un applicazione datacentric contenente: liste, form, etc; è 
 
 Questo progetto di demo (tra le altre code) contiene un BaseDataSource mediante il quale è possibile inviare al server delle chiamate con funziaonalità di: paginazione, filtro ed ordinamento. Può essere bindato sia in un controllo mat-table / mat-paginator di Angular Material e sia in una tabella HTML custom con relativi bottoni di paginazione.
 
-![example1](/AngularAppDataSource1/exemple1.png)
+![example1](/exemple1.png)
 
-![example2](/AngularAppDataSource1/exemple2.png)
+![example2](/exemple2.png)
 
-![example3](/AngularAppDataSource1/exemple3.png)
+![example3](/exemple3.png)
 
 
  loading$: Observable<boolean>;
