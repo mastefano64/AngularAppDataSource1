@@ -1,6 +1,6 @@
 # AngularAppDataSource1
 
-Quando si realizza un applicazione datacentric contenente: liste, form, etc; è necessario avere delle classi base da cui ereditare che si occupano dell'accesso al ai dati tramite api, onde evitare di reiventare la ruota in ogni componente.
+Quando si realizza un applicazione datacentric contenente: liste, form, etc; è necessario avere delle classi base da cui ereditare che si occupano dell'accesso al ai dati tramite api, onde evitare di reiventare la ruota in ogni componente. 
 
 Questo progetto di demo (tra le altre code) contiene un BaseDataSource mediante il quale è possibile inviare al server delle chiamate con funziaonalità di: paginazione, filtro ed ordinamento. Può essere bindato sia in un controllo mat-table / mat-paginator di Angular Material e sia in una tabella HTML custom con relativi bottoni di paginazione.
 
