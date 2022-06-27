@@ -1,4 +1,4 @@
-# AngularAppDataSource1
+# AngularAppDataSource1 
 
 Quando si realizza un applicazione datacentric contenente: liste, form, etc; è necessario avere delle classi base da cui ereditare che si occupano dell'accesso al ai dati tramite api, onde evitare di reiventare la ruota in ogni componente. 
 
